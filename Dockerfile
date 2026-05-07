@@ -1,11 +1,7 @@
-FROM node:18-alpine AS base
-RUN apk add --no-cache ffmpeg
-
-FROM n8nio/n8n
+FROM n8nio/n8n:latest
 
 USER root
-COPY --from=base /usr/bin/ffmpeg /usr/bin/ffmpeg
-COPY --from=base /usr/lib/libav* /usr/lib/
-COPY --from=base /usr/lib/libsw* /usr/lib/
-COPY --from=base /usr/lib/libpostproc* /usr/lib/
+
+RUN apk add --no-cache ffmpeg
+
 USER node
