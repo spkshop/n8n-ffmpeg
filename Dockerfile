@@ -1,4 +1,4 @@
 FROM n8nio/n8n
 USER root
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apk update && apk add --no-cache ffmpeg
 USER node
