@@ -1,9 +1,5 @@
-FROM node:18-alpine
+FROM ghcr.io/n8n-io/n8n:latest
 
-RUN apk add --no-cache ffmpeg python3 make g++
-
-RUN npm install -g n8n --prefer-offline
-
-EXPOSE 5678
-
-CMD ["n8n", "start"]
+USER root
+RUN apk add --no-cache ffmpeg
+USER node
