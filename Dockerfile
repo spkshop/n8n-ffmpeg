@@ -1,9 +1,9 @@
-FROM ghcr.io/n8n-io/n8n:latest
+FROM node:18-alpine
 
-USER root
-RUN microdnf install -y ffmpeg || \
-    tdnf install -y ffmpeg || \
-    apt-get install -y ffmpeg || \
-    echo "trying alternatives" && \
-    apk add --no-cache ffmpeg
-USER node
+RUN apk add --no-cache ffmpeg
+
+RUN npm install -g n8n@latest --ignore-scripts
+
+EXPOSE 5678
+
+CMD ["n8n", "start"]
