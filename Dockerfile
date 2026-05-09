@@ -1,13 +1,11 @@
-FROM node:18-alpine
+FROM node:18-slim
 
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y \
     ffmpeg \
     python3 \
     make \
     g++ \
-    linux-headers \
-    udev \
-    && ln -sf python3 /usr/bin/python
+    && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g n8n@latest
 
