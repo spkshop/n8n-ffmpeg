@@ -1,8 +1,8 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache ffmpeg
+RUN apk add --no-cache ffmpeg python3 make g++
 
-RUN npm install -g n8n@latest --ignore-scripts
+RUN npm install -g n8n@latest
 
 EXPOSE 5678
 
